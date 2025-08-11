@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Experience | Harsh Singh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+
+    /* Section Base */
+    #experience {
+      padding: 80px 20px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+      border-top: 1px solid rgba(0, 200, 255, 0.2);
+    }
+
+    .experience-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: cyan;
+      border-radius: 2px;
+    }
+
+    .experience-card {
+      background: rgba(0, 10, 20, 0.7);
+      border: 1px solid rgba(0, 200, 255, 0.2);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      text-align: left;
+    }
+
+    .experience-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .company-logo {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+    }
+
+    .role {
+      font-size: 1.8rem;
+      color: cyan;
+      margin-bottom: 5px;
+    }
+
+    .company, .duration {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .experience-description {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin: 20px 0;
+    }
+
+    .certificate-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 20px;
+      background: rgba(0, 200, 255, 0.05);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .certificate-preview {
+      width: 150px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 200, 255, 0.3);
+    }
+
+    .certificate-info p {
+      margin: 5px 0;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .certificate-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .certificate-preview {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== EXPERIENCE SECTION ===== -->
+  <section id="experience">
+    <div class="experience-container">
+      <h2 class="section-title">Experience</h2>
+      <div class="experience-card">
+        <div class="experience-header">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft Logo" class="company-logo">
+          <div>
+            <h3 class="role">AI Intern – Foundations of AI</h3>
+            <p class="company">Microsoft · Internship</p>
+            <p class="duration">Apr 2025 – May 2025 · 2 mos</p>
+          </div>
+        </div>
+        <p class="experience-description">
+          Completed a 4-week AI internship as part of the Microsoft AI for Youth initiative, implemented by Edunet Foundation in collaboration with AICTE. 
+          Gained hands-on experience in AI fundamentals, tools, and real-world project applications.
+        </p>
+        <div class="certificate-box">
+          <img src="Screenshot 2025-07-26 151501.png" alt="Certificate Preview" class="certificate-preview">
+          <div class="certificate-info">
+            <p><strong>certificate.pdf</strong></p>
+            <p>Student ID: STU67ea3d2ce60f01743404332</p>
+            <p>Internship ID: INTERNSHIP_174175788467d11dbc1d08d</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

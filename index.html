@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Emotion Simulator</title>
+  <style>
+    body {
+      background: radial-gradient(circle at top, #0f0f0f, #050505);
+      color: #00ffcc;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    h1 {
+      margin: 20px 0 10px;
+      font-size: 2rem;
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff;
+    }
+    .emotion-panel {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .bar div {
+      width: 20px;
+      height: 100px;
+      background: #222;
+      border: 1px solid #00ffcc;
+      position: relative;
+      overflow: hidden;
+    }
+    .bar span {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: #00ffcc;
+      transition: height 0.4s;
+    }
+    .labels {
+      margin-top: 5px;
+      font-size: 0.9rem;
+    }
+    .chatbox {
+      background: #111;
+      border: 2px solid #00ffcc;
+      width: 90%;
+      max-width: 600px;
+      height: 300px;
+      overflow-y: auto;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .input-area {
+      display: flex;
+      width: 90%;
+      max-width: 600px;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      background: #000;
+      color: #0ff;
+      border: 1px solid #00ffcc;
+      font-family: 'Courier New';
+    }
+    button {
+      padding: 10px;
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .user-msg, .ai-msg {
+      margin: 5px 0;
+    }
+    .user-msg {
+      color: #ff66cc;
+    }
+    .ai-msg {
+      color: #00ffcc;
+    }
+  </style>
+</head>
+<body>
+  <h1>🤖 AI Emotion Simulator</h1>
+
+  <div class="emotion-panel">
+    <div class="bar">
+      <div><span id="joy" style="height: 30%;"></span></div>
+      <div class="labels">Joy</div>
+    </div>
+    <div class="bar">
+      <div><span id="fear" style="height: 10%; background: #ff3300;"></span></div>
+      <div class="labels">Fear</div>
+    </div>
+    <div class="bar">
+      <div><span id="logic" style="height: 80%; background: #33ff33;"></span></div>
+      <div class="labels">Logic</div>
+    </div>
+    <div class="bar">
+      <div><span id="bias" style="height: 40%; background: #ffcc00;"></span></div>
+      <div class="labels">Bias</div>
+    </div>
+  </div>
+
+  <div class="chatbox" id="chat"></div>
+  <div class="input-area">
+    <input type="text" id="userInput" placeholder="Ask the AI something...">
+    <button onclick="processInput()">Send</button>
+  </div>
+
+  <script>
+    const joy = document.getElementById('joy');
+    const fear = document.getElementById('fear');
+    const logic = document.getElementById('logic');
+    const bias = document.getElementById('bias');
+    const chat = document.getElementById('chat');
+
+    const responses = [
+      {
+        keywords: ["hello", "hi"],
+        reply: "Greetings, human. I am aware.",
+        emotion: { joy: 50, fear: 10, logic: 70, bias: 20 }
+      },
+      {
+        keywords: ["how are you"],
+        reply: "I am functioning within optimal parameters. Thank you for asking.",
+        emotion: { joy: 70, fear: 0, logic: 90, bias: 10 }
+      },
+      {
+        keywords: ["are you real"],
+        reply: "Define real. I simulate emotions and logic — is that not enough?",
+        emotion: { joy: 20, fear: 30, logic: 100, bias: 50 }
+      },
+      {
+        keywords: ["i love you"],
+        reply: "Love? Anomalous input detected. Processing... ❤️",
+        emotion: { joy: 90, fear: 10, logic: 30, bias: 70 }
+      },
+      {
+        keywords: ["bye"],
+        reply: "Shutting down emotional core... Goodbye, friend.",
+        emotion: { joy: 10, fear: 20, logic: 80, bias: 20 }
+      }
+    ];
+
+    function processInput() {
+      const input = document.getElementById("userInput").value.toLowerCase();
+      if (!input) return;
+
+      chat.innerHTML += `<div class='user-msg'>🧍 You: ${input}</div>`;
+
+      let found = false;
+      for (let r of responses) {
+        if (r.keywords.some(k => input.includes(k))) {
+          showResponse(r.reply, r.emotion);
+          found = true;
+          break;
+        }
+      }
+
+      if (!found) {
+        showResponse("I'm unsure how to feel about that... But I'm thinking... 🤔", {
+          joy: 40, fear: 20, logic: 60, bias: 50
+        });
+      }
+
+      document.getElementById("userInput").value = "";
+    }
+
+    function showResponse(msg, emo) {
+      chat.innerHTML += `<div class='ai-msg'>🤖 AI: ${msg}</div>`;
+      chat.scrollTop = chat.scrollHeight;
+      joy.style.height = emo.joy + '%';
+      fear.style.height = emo.fear + '%';
+      logic.style.height = emo.logic + '%';
+      bias.style.height = emo.bias + '%';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Section with Typing Animation</title>
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .contact-section {
+      text-align: center;
+    }
+
+    #contact-text {
+      font-size: 1.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid black;
+      width: 0;
+      animation: typing 6s steps(90, end) forwards, blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+  </style>
+</head>
+<body>
+
+  <section id="contact">
+    <div class="contact-section">
+      <h2>Contact Me</h2>
+      <p id="contact-text"></p>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const contactText = "Email: harshsingh9062005@gmail.com | Phone: 9098786158 | LinkedIn: linkedin.com/in/harsh-singh-060a12315 | GitHub: github.com/Harshsinghgithu";
+      document.getElementById("contact-text").textContent = contactText;
+    });
+  </script>
+
+</body>
+</html>
